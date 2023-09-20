@@ -20,7 +20,6 @@ int currentPitchServoPosition = 90;
 
 void setup()
 {
-  Serial.begin(9600);
   pinMode(LED_BUILTIN, OUTPUT);
   yawServo.attach(YAW_SERVO_PIN);
   pitchServo.attach(PITCH_SERVO_PIN);
@@ -34,14 +33,8 @@ void loop()
 {
   digitalWrite(LED_BUILTIN, HIGH);
 
-  Serial.println();
-
   currentYawServoPosition = getRandomServoPosition(currentYawServoPosition, yawServoMin, yawServoMax);
   currentPitchServoPosition = getRandomServoPosition(currentPitchServoPosition, pitchServoMin, pitchServoMax);
-  
-  Serial.println("New position");
-  Serial.println(currentYawServoPosition);
-  Serial.println(currentPitchServoPosition);
 
   yawServo.write(currentYawServoPosition);
   pitchServo.write(currentPitchServoPosition);
